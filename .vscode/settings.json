@@ -1,0 +1,6 @@
+{
+  "github.copilot.enable": false,
+  "github.copilot.inlineSuggest.enable": false,
+  "editor.inlineSuggest.enabled": false,
+  "java.configuration.updateBuildConfiguration": "interactive"
+}
