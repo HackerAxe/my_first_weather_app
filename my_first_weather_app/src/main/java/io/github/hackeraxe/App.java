@@ -22,7 +22,10 @@ TO DO FOR TOMORROW:
 public class App{
     public static void main(String[] args){
         Weather ourWeather = new Weather();
-        displayWeather(ourWeather);
+        if (ourWeather != null){
+           displayWeather(ourWeather); 
+        }
+        
     }
 
     public static void displayWeather(Weather weather){

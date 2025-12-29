@@ -45,9 +45,14 @@ public class Weather {
 
     private void setWeather(){
         JsonObject weather = parseJson();
-        temperature = weather.get("temperature").getAsDouble();
-        windspeed = weather.get("windspeed").getAsDouble();
-        weathercode = weather.get("weathercode").getAsInt();
+        if (weather == null){
+            System.out.println("Something went wrong with the json.");
+            return;
+        }else{
+            temperature = weather.get("temperature").getAsDouble();
+            windspeed = weather.get("windspeed").getAsDouble();
+            weathercode = weather.get("weathercode").getAsInt();
+        }
     }
 
     public double getTemperature(){
