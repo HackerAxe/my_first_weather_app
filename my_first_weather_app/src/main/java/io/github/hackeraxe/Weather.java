@@ -9,13 +9,18 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 public class Weather {
-    double temperature = 0.0;
-    double windspeed = 0.0;
-    int weathercode = 0;
+    private double temperature = 0.0;
+    private double windspeed = 0.0;
+    private int weathercode = 0;
 
     public Weather(){
         setWeather();
     }
+
+    /**
+     * Retrieves weather data response from Open-Meteo API
+     * @return The JSON in the form of a string
+     */
     private String getWeatherJson(){
         HttpClient client = HttpClient.newHttpClient();
         String url = "https://api.open-meteo.com/v1/forecast?latitude=40.44&longitude=-79.97&current_weather=true";
@@ -31,6 +36,10 @@ public class Weather {
         }
     }
 
+    /**
+     * Parses the JSON String
+     * @return A JsonObject that can extract the weather data, such as temp, windspeed, and weathercode
+     */
     private JsonObject parseJson(){
         String jsonString = getWeatherJson();
         if(jsonString.compareTo("ERR") == 0){
@@ -43,11 +52,13 @@ public class Weather {
             }  
     }
 
+    /**
+     * Sets the temperature, windspeed, and weathercode
+     */
     private void setWeather(){
         JsonObject weather = parseJson();
         if (weather == null){
             System.out.println("Something went wrong with the json.");
-            return;
         }else{
             temperature = weather.get("temperature").getAsDouble();
             windspeed = weather.get("windspeed").getAsDouble();
@@ -55,14 +66,26 @@ public class Weather {
         }
     }
 
+    /**
+     * temp getter
+     * @return temperature as double
+     */
     public double getTemperature(){
-        return temperature;
+        return (temperature * 9.0/5.0) + 32.0;
     }
 
+    /**
+     * windspeed getter
+     * @return wind speed as double
+     */
     public double getWindspeed(){
         return windspeed;
     }
 
+    /**
+     * weathercode getter
+     * @return weather code as int
+     */
     public int getWeatherCode(){
         return weathercode;
     }
