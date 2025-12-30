@@ -1,12 +1,14 @@
 package io.github.hackeraxe;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 public class WeatherView {
     Label tempLabel = new Label();
     Label windSpeedLabel = new Label();
     Label weatherCodeLabel = new Label();
     VBox root = new VBox();
+    Button refreshButton = new Button("Refresh");
     /**
      * Initialize the Weather UI
      */
@@ -14,7 +16,7 @@ public class WeatherView {
         /**
          * add just adds one child, but addAll adds multiple after .getChildren().
          */
-        root.getChildren().addAll(tempLabel, windSpeedLabel, weatherCodeLabel);
+        root.getChildren().addAll(tempLabel, windSpeedLabel, weatherCodeLabel, refreshButton);
     } 
 
     /**
@@ -23,6 +25,15 @@ public class WeatherView {
      */
     public VBox getRoot(){
         return this.root;
+    }
+
+    /**
+     * Remember, the view will NOT HANDLE what happens when the button gets pressed, the controller will. So,
+     * we should give this button to the CONTROLLER after we create it.
+     * @return
+     */
+    public Button getRefreshButton(){
+        return refreshButton;
     }
 
     /**

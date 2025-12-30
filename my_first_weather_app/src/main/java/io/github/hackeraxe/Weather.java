@@ -71,7 +71,7 @@ public class Weather {
      * @return temperature as double
      */
     public double getTemperature(){
-        return (temperature * 9.0/5.0) + 32.0;
+        return (temperature * (9.0/5.0)) + 32.0;
     }
 
     /**
