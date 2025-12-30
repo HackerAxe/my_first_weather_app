@@ -2,6 +2,7 @@
 This weather app taught/reinforced several Java and general software-engineering concepts.
 
 ## Things I Learned
+
 - ### APIs
     - To get data we want from APIs, I learned to use a Client > Request > Response pattern, and how I can do that with Java for the first time using Open-Meteo.
 - ### Maven
@@ -14,6 +15,8 @@ This weather app taught/reinforced several Java and general software-engineering
     - The main method in App.java can create a weather object and only has access to the getter methods that return the temperature, wind speed, and weather codes of the current weather. The way the weather information is retrieved or how the weather JSON is parsed is completely **abstracted** from the user of the weather class.
 - ### Low and Tight Coupling
     - I asked Copilot how I should test a method that is supposed to be privated, without sacrificing my method's privacy, and I learned that tests that are too reliant on the code's structure are **tightly coupled**. To avoid this, I tested the entire program as a whole, and kept in mind that a test should focus on the "what," or the result of the methods being tested, and not the "how," or in what way the code was written to make a specific result occur.
+- ### MVC
+    - As I kept building upon this weather app, I used a model, view, control design pattern. First I created the model, the weather gathering, then the view using JavaFX, and then controller, which decided when and what information should be displayed. Slowly asking questions about what class should be responsible for what expanded my knowledge even further about encapsulation, low coupling, and most of all, cohesion and modularity. At first, I had trouble understanding if the WeatherView should be responsible with the getters from the weather model, but I realized it only has access to the weather model in the first place because of the controller passing that data into it. It meant that the controller was still, *well, in control.*
 - ### Static vs Instance Methods
     - Static methods belong to a class, and Instance methods belong to a particular object, and affect that objects fields. I encountered an error when I tried to access the temperature field in my "setWeather" method because it was a static method. It should have been an instance method because it directly affected an object's fields. Static methods should be reserved for methods that are more like "tools" that do not tie to a specific object.
 - ### Builder Methods
