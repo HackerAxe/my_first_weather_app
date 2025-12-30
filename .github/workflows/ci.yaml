@@ -21,7 +21,7 @@ jobs:
         java-version: 21
 
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package --file my_first_weather_app/pom.xml
 
     - name: Run tests
       run: mvn test
